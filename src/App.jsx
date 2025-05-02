@@ -1,17 +1,17 @@
+import { Route, Routes } from "react-router";
 import "./App.css";
-import AddBookForm from "./components/AddBookForm";
-import BookList from "./components/BookList";
+import HomePage from "./pages/Home";
+import PopularPage from "./pages/Popular";
+import AddBookPage from "./pages/AddBook";
 
 function App() {
   return (
-    <>
-      <h1 className="title">Моя библиотека</h1>
-      <BookList />
-      <AddBookForm />
-      <div className="footer">
-        <p className="authorText">Все права защищены!</p>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<HomePage />}>
+        <Route path="/add" element={<AddBookPage />} />
+      </Route>
+      <Route path="/popular" element={<PopularPage />} />
+    </Routes>
   );
 }
 

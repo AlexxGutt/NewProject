@@ -2,15 +2,13 @@ export const books = [
   {
     title: "1984",
     author: "George Orwell",
-    cover:
-      "https://books.google.ru/books/publisher/content?id=cZgxEQAAQBAJ&hl=ru&pg=PP1&img=1&zoom=3&bul=1&sig=ACfU3U1LMuG2ya1OB0x-4njP60upsFTvaQ&w=1280",
+    cover: "https://royallib.com/data/images/50/cover_50189.jpg",
     rate: "4.8",
   },
   {
     title: "To Kill a Mockingbird",
     author: "Harper Lee",
-    cover:
-      "https://books.google.ru/books/publisher/content?id=aN4RBAAAQBAJ&hl=ru&pg=PA1&img=1&zoom=3&bul=1&sig=ACfU3U2Jrtcdfz4CLWuqldghVMRgdEBG2Q&w=1280",
+    cover: "https://cdn.litres.ru/pub/c/cover/129770.jpg",
     rate: "4.3",
   },
   {

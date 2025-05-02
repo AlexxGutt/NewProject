@@ -1,6 +1,5 @@
-import { books } from "../data";
 import BookCard from "./BookCard";
-function BookList() {
+function BookList({ books }) {
   return (
     <div className="bookList">
       {books.map((book, index) => (

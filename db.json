@@ -1,0 +1,25 @@
+{
+  "books": [
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "cover": "https://royallib.com/data/images/50/cover_50189.jpg",
+      "rate": "4.8",
+      "id": "d459"
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "cover": "https://cdn.litres.ru/pub/c/cover/129770.jpg",
+      "rate": "4.3",
+      "id": "272c"
+    },
+    {
+      "title": "React быстрый старт",
+      "author": "Stoyan Stefanov",
+      "cover": "https://imo10.labirint.ru/books/945884/cover.jpg/242-0",
+      "rate": "4.8",
+      "id": "1b04"
+    }
+  ]
+}
