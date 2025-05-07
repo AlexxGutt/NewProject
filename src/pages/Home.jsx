@@ -2,6 +2,7 @@ import { Link, Outlet } from "react-router";
 import BookList from "../components/BookList";
 import { useEffect, useState } from "react";
 import { fetchBooks } from "../services/api";
+import { Button } from "./Home.style";
 function HomePage() {
   const [books, setBooks] = useState([]);
   useEffect(() => {
@@ -14,8 +15,12 @@ function HomePage() {
     <>
       <header>
         <h1 className="title">Моя библиотека</h1>
-        <Link to="/add">Добавить</Link>
-        <Link to="/popular">Популярное</Link>
+        <Button>
+          <Link to="/add">Добавить</Link>
+        </Button>
+        <Button>
+          <Link to="/popular">Популярное</Link>
+        </Button>
       </header>
       <BookList books={books} />
 
