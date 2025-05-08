@@ -1,7 +1,9 @@
 import { Link, Outlet } from "react-router";
-import { useState } from "react";
-import { postBook } from "../services/api";
-import { ButtonClose } from "./AddBookForm.style";
+import { useContext, useState } from "react";
+import { fetchBooks, postBook } from "../services/api";
+import * as S from "./AddBookForm.style";
+import { BookContext } from "../context/BookContext";
+import { useNavigate } from "react-router";
 
 function AddBookForm() {
   const [bookData, setBookData] = useState({
@@ -10,6 +12,8 @@ function AddBookForm() {
     cover: "",
     rate: "",
   });
+  const navigate = useNavigate();
+  const { setBooks } = useContext(BookContext);
   function handleInputChange(event) {
     const { name, value } = event.target;
     const newBookData = {
@@ -20,7 +24,12 @@ function AddBookForm() {
   }
   function handleSubmit(event) {
     event.preventDefault();
-    postBook(bookData);
+    postBook(bookData).then(() => {
+      fetchBooks().then((responseData) => {
+        setBooks(responseData);
+        navigate(-1);
+      });
+    });
   }
   return (
     <div className="addForm">
@@ -51,9 +60,9 @@ function AddBookForm() {
         />
         <div className="buttonPosition">
           <button className="button">Добавить</button>
-          <ButtonClose>
+          <S.ButtonClose>
             <Link to="/">Закрыть</Link>
-          </ButtonClose>
+          </S.ButtonClose>
         </div>
       </form>
       <Outlet />
