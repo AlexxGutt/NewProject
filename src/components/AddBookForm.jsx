@@ -1,12 +1,19 @@
-import { useState } from "react";
-import { postBook } from "../services/api";
+import { Link, Outlet } from "react-router";
+import { useContext, useState } from "react";
+import { fetchBooks, postBook } from "../services/api";
+import * as S from "./AddBookForm.style";
+import { BookContext } from "../context/BookContext";
+import { useNavigate } from "react-router";
 
 function AddBookForm() {
   const [bookData, setBookData] = useState({
     title: "",
     author: "",
     cover: "",
+    rate: "",
   });
+  const navigate = useNavigate();
+  const { setBooks } = useContext(BookContext);
   function handleInputChange(event) {
     const { name, value } = event.target;
     const newBookData = {
@@ -17,7 +24,12 @@ function AddBookForm() {
   }
   function handleSubmit(event) {
     event.preventDefault();
-    postBook(bookData);
+    postBook(bookData).then(() => {
+      fetchBooks().then((responseData) => {
+        setBooks(responseData);
+        navigate(-1);
+      });
+    });
   }
   return (
     <div className="addForm">
@@ -46,9 +58,17 @@ function AddBookForm() {
           onChange={handleInputChange}
           placeholder="Ссылка на обложку"
         />
-        <button className="button">Добавить</button>
+        <div className="buttonPosition">
+          <button className="button">Добавить</button>
+          <S.ButtonClose>
+            <Link to="/">Закрыть</Link>
+          </S.ButtonClose>
+        </div>
       </form>
+      <Outlet />
     </div>
   );
 }
 export default AddBookForm;
+
+// GET /books?rate_gte=4.5 (рейтинг выше 4,5)
